@@ -60,3 +60,8 @@ C:\Users\Water\Source\DynamoDCS\DynamoDCS\obj\x86\Debug\Microsoft.Toolkit.Uwp.UI
 C:\Users\Water\Source\DynamoDCS\DynamoDCS\obj\x86\Debug\Microsoft.UI.Xaml.pri.xml
 C:\Users\Water\Source\DynamoDCS\DynamoDCS\obj\x86\Debug\Microsoft.Xaml.Interactions.pri.xml
 C:\Users\Water\Source\DynamoDCS\DynamoDCS\obj\x86\Debug\Microsoft.Xaml.Interactivity.pri.xml
+C:\Users\Water\Source\DynamoDCS\DynamoDCS\obj\x86\Debug\MissionPage.g.i.cs
+C:\Users\Water\Source\DynamoDCS\DynamoDCS\obj\x86\Debug\MissionPage.g.cs
+C:\Users\Water\Source\DynamoDCS\DynamoDCS\obj\x86\Debug\MissionPage.xaml
+C:\Users\Water\Source\DynamoDCS\DynamoDCS\obj\x86\Debug\MissionPage.xbf
+C:\Users\Water\Source\DynamoDCS\DynamoDCS\bin\x86\Debug\MissionPage.xbf

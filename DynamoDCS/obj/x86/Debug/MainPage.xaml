@@ -7,19 +7,17 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-    <NavigationView>
+    <NavigationView x:ConnectionId='2' x:Name="NavView"
+                    PaneDisplayMode="Top"
+                                                     >
+        <NavigationView.MenuItems>
+            <NavigationViewItem Tag="mission" Content="Mission"/>
+            <NavigationViewItem Tag="barracks" Content="Barracks"/>
+            <NavigationViewItem Tag="hanger" Content="Hanger"/>
+            <NavigationViewItem Tag="supply" Content="Supply"/>
+        </NavigationView.MenuItems>
     <Grid>
-        <ScrollViewer x:ConnectionId='2' Name="MapViewer" ZoomMode="Enabled" MaxZoomFactor="10"
-                                                               
-                                                                   
-                                                    
-                                                           
-                                                    
-              HorizontalScrollMode="Disabled" 
-              HorizontalScrollBarVisibility="Auto"
-              VerticalScrollMode="Disabled" MinZoomFactor=".1">
-        <Image x:ConnectionId='3' Name="Map" Source="Assets/caucuses.jpg"></Image>
-        </ScrollViewer>
+            <Frame x:ConnectionId='3' Name="ContentFrame"></Frame>
     </Grid>
     </NavigationView>
 </Page>

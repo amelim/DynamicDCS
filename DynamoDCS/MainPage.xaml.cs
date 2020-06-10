@@ -15,6 +15,8 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 using System.Diagnostics;
+using Windows.ApplicationModel.VoiceCommands;
+using Windows.UI.Xaml.Media.Animation;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409
 
@@ -25,52 +27,46 @@ namespace DynamoDCS
     /// </summary>
     public sealed partial class MainPage : Page
     {
+        // List of ValueTuple holding the Navigation Tag and the relative Navigation Page
+        private readonly List<(string Tag, Type Page)> _pages = new List<(string Tag, Type Page)>
+        {
+            ("mission", typeof(MissionPage)),
+            //("barracks", typeof(BarracksPage)),
+        };
 
-        bool mapClicked = false;
-        PointerPoint mouseClickOrigin;
         public MainPage()
         {
             this.InitializeComponent();
+            ContentFrame.Navigate(typeof(MissionPage));
         }
 
-        private void scrollViewer_MouseLeftButtonDown(object sender, PointerRoutedEventArgs e)
+        private void NavView_ItemInvoked(NavigationView sender, NavigationViewItemInvokedEventArgs args)
         {
-            e.Handled = true;
-            mapClicked = true;
-            mouseClickOrigin = e.GetCurrentPoint(Map);
+            String navItemTag = args.InvokedItemContainer.Tag.ToString();
+            NavView_Navigate(navItemTag, args.RecommendedNavigationTransitionInfo);
         }
 
-        private void scrollViewer_MouseLeftButtonRelease(object sender, PointerRoutedEventArgs e)
+        private void NavView_Navigate(string navItemTag, NavigationTransitionInfo transitionInfo)
         {
-            e.Handled = true;
-            mapClicked = false;
-        }
-
-        private void scrollViewer_MouseLost(object sender, PointerRoutedEventArgs e)
-        {
-            e.Handled = true;
-            mapClicked = false;
-        }
-
-        private void scrollViewer_MouseMoved(object sender, PointerRoutedEventArgs e)
-        {
-            e.Handled = true;
-            if (mapClicked)
+            Type _page = null;
+            if (navItemTag == "settings")
             {
-                PointerPoint mousePoint = e.GetCurrentPoint(Map);
-                double curX = MapViewer.HorizontalOffset;
-                double curY = MapViewer.VerticalOffset;
-
-                MapViewer.ChangeView(
-                    curX - (mousePoint.Position.X - mouseClickOrigin.Position.X), 
-                    curY - (mousePoint.Position.Y - mouseClickOrigin.Position.Y), 
-                    MapViewer.ZoomFactor);
+                //_page = typeof(SettingsPage);
             }
-        }
+            else
+            {
+                var item = _pages.FirstOrDefault(p => p.Tag.Equals(navItemTag));
+                _page = item.Page;
+            }
+            // Get the page type before navigation so you can prevent duplicate
+            // entries in the backstack.
+            var preNavPageType = ContentFrame.CurrentSourcePageType;
 
-        private void scrollViewer_MouseWheel(object sender, PointerRoutedEventArgs e)
-        {
-            e.Handled = true;
+            // Only navigate if the selected page isn't currently loaded.
+            if (!(_page is null) && !Type.Equals(preNavPageType, _page))
+            {
+                ContentFrame.Navigate(_page, null, transitionInfo);
+            }
         }
     }
 }

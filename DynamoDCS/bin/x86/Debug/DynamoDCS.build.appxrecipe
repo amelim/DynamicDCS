@@ -94,6 +94,9 @@
     <AppxPackagedFile Include="C:\Users\Water\Source\DynamoDCS\DynamoDCS\bin\x86\Debug\MainPage.xbf">
       <PackagePath>MainPage.xbf</PackagePath>
     </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Water\Source\DynamoDCS\DynamoDCS\bin\x86\Debug\MissionPage.xbf">
+      <PackagePath>MissionPage.xbf</PackagePath>
+    </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Water\Source\DynamoDCS\DynamoDCS\bin\x86\Debug\Themes\Generic.xbf">
       <PackagePath>Themes\Generic.xbf</PackagePath>
     </AppxPackagedFile>
